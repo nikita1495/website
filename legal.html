@@ -4,27 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Правовая информация | Светлана Гребенюк</title>
-    <!-- Стили и оформление страницы (темная тема, аккордеон, адаптив) -->
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --text-color: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+        .wrapper { width: 100%; max-width: 480px; }
+        .accordion-doc { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; margin-bottom: 16px; cursor: pointer; }
+    </style>
 </head>
 <body>
     <div class="wrapper">
-        <a href="index.html" class="back-link">← На главную</a>
-        <h1 class="page-title">Правовая информация</h1>
-        <div class="doc-list">
-            <!-- БЛОК 1: ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ -->
-            <div class="accordion-doc" onclick="toggleDoc(this)">
-                <div class="doc-header">
-                    <span class="doc-name">Политика конфиденциальности</span>
-                    <span class="doc-arrow">➔</span>
-                </div>
-                <div class="doc-body">
-                    <div class="doc-text">
-                        <!-- Текст политики конфиденциальности с терминами, целями и правами пользователя -->
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Реквизиты и футер -->
+        <h1>Правовая информация</h1>
+        <!-- Блоки документов: Политика конфиденциальности, Оферта, Cookie и реквизиты -->
     </div>
 </body>
 </html>
