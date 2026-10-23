@@ -6,20 +6,20 @@
     <title>Тарифы и курсы | Светлана Гребенюк</title>
     <style>
         :root {
-            --bg-color: #aa8a73;
-            --text-color: #32251d; 
+            --bg-color: #aa8a73; /* Благородный песочно-кофейный фон */
+            --text-color: #32251d; /* Глубокий шоколадный цвет текста */
             --accent-color: #5d4638;  
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.25); /* Мягкие контрастные плашки */
+            --card-border: rgba(50, 37, 29, 0.15); /* Деликатные кофейные границы */
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         
-        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; }
+        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; min-height: calc(100vh - 80px); }
         
         /* Кнопка назад */
-        .back-link { color: #666; text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; transition: 0.2s; }
-        .back-link:hover { color: #fff; }
+        .back-link { color: rgba(50, 37, 29, 0.6); text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; transition: 0.2s; font-weight: 500; }
+        .back-link:hover { color: var(--text-color); }
 
         /* Шапка страницы */
         .page-header { margin-bottom: 40px; }
@@ -27,29 +27,29 @@
         .page-title { font-size: 36px; font-weight: 600; letter-spacing: -1px; line-height: 1.1; }
 
         /* Продукты */
-        .course-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 30px 24px; margin-bottom: 32px; transition: 0.3s; }
-        .course-section:hover { border-color: rgba(255, 255, 255, 0.15); }
+        .course-section { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 30px 24px; margin-bottom: 32px; transition: 0.3s; box-shadow: 0 4px 15px rgba(50, 37, 29, 0.05); }
+        .course-section:hover { border-color: rgba(50, 37, 29, 0.3); transform: scale(1.01); }
         
-        .course-title { font-size: 22px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.5px; }
-        .course-intro { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
+        .course-title { font-size: 22px; font-weight: 600; margin-bottom: 12px; letter-spacing: -0.5px; color: var(--text-color); }
+        .course-intro { font-size: 14px; color: rgba(50, 37, 29, 0.9); line-height: 1.6; margin-bottom: 20px; }
         
         /* Программа обучения (Что входит) */
         .program-list { margin-bottom: 25px; padding-left: 5px; }
-        .program-item { display: flex; gap: 12px; font-size: 13px; color: #888; line-height: 1.5; margin-bottom: 10px; }
+        .program-item { display: flex; gap: 12px; font-size: 13px; color: rgba(50, 37, 29, 0.8); line-height: 1.5; margin-bottom: 10px; }
         .program-dot { color: var(--accent-color); font-weight: bold; }
 
-        .price-block { font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 20px; display: flex; align-items: baseline; gap: 8px; }
-        .price-block span { font-size: 14px; color: #555; text-decoration: line-through; font-weight: 400; }
+        .price-block { font-size: 24px; font-weight: 700; color: var(--text-color); margin-bottom: 20px; display: flex; align-items: baseline; gap: 8px; }
 
-        /* Кнопки */
-        .btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: 0.2s; border: none; width: 100%; cursor: pointer; background: #ffffff; color: #0d0d0d; }
-        .btn:hover { background: #e6e6e6; }
+        /* Премиальные темные кнопки */
+        .btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; border: none; width: 100%; cursor: pointer; background: #32251d; color: #ffffff; }
+        .btn:hover { background: #5d4638; box-shadow: 0 4px 12px rgba(50, 37, 29, 0.2); }
 
         /* Подвал */
-        .footer { text-align: center; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--card-border); }
-        .legal-info { font-size: 11px; color: #555; margin-bottom: 10px; }
+        .footer { text-align: center; margin-top: auto; padding-top: 40px; border-top: 1px solid var(--card-border); }
+        .legal-info { font-size: 11px; color: rgba(50, 37, 29, 0.6); margin-bottom: 10px; line-height: 1.4; }
         .legal-links { display: flex; justify-content: center; gap: 15px; }
-        .legal-links a { font-size: 11px; color: #888; text-decoration: none; border-bottom: 1px dashed #444; }
+        .legal-links a { font-size: 11px; color: rgba(50, 37, 29, 0.85); text-decoration: none; border-bottom: 1px dashed rgba(50, 37, 29, 0.4); transition: 0.2s; }
+        .legal-links a:hover { color: var(--text-color); border-bottom-color: var(--text-color); }
     </style>
 </head>
 <body>
@@ -63,8 +63,9 @@
             <h1 class="page-title">Тарифы и курсы</h1>
         </header>
         
-        <section class="course-section" style="border-color: rgba(255, 255, 255, 0.1);">
-            <h2 class="course-title">Чек-лист »</h2>
+        <!-- ЕДИН ОРАЗОВЫЙ ПРОДУКТ: ЧЕК-ЛИСТ -->
+        <section class="course-section">
+            <h2 class="course-title">Чек-лист «Название чек-листа»</h2>
             <p class="course-intro">Краткое и емкое практическое руководство. Пошаговая инструкция, которая поможет вам получить быстрый результат в теме здоровья и ресурса прямо сейчас.</p>
             
             <div class="program-list">
@@ -82,7 +83,7 @@
             <p class="course-intro">Глубокий практический материал для тех, кто хочет прекратить сливать энергию во внешний мир, избавиться от синдрома поиска одобрения и выстроить внутреннюю психологическую опору.</p>
             
             <div class="program-list">
-                <div class="program-item"><span class="program-dot">•</span><span>Урок 1: Диагностика утечек энергии и аудит текущего состояния.</span></div>
+                <div class="program-item"><span class="program-dot">•</span><span>Урок 1: Diagnostic утечек энергии и аудит текущего состояния.</span></div>
                 <div class="program-item"><span class="program-dot">•</span><span>Урок 2: Практики центрирования и возвращения фокуса внимания на себя.</span></div>
                 <div class="program-item"><span class="program-dot">•</span><span>Урок 3: Пошаговый алгоритм фиксации и удержания ресурсного состояния.</span></div>
             </div>
