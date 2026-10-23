@@ -41,7 +41,7 @@
             cursor: pointer;
         }
 
-        /* Эффект увеличения при наведении/активации */
+        /* Эффект увеличения и раскрытия при наведении (для ПК) */
         .link-item:hover, .accordion-item:hover, .accordion-item.active { 
             background: rgba(255, 255, 255, 0.05); 
             border-color: rgba(255, 255, 255, 0.2); 
@@ -49,15 +49,15 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         
-        /* Главная строка внутри плашки (всегда видна) */
+        /* Главная строка внутри плашки */
         .main-row { display: flex; align-items: center; width: 100%; }
         .link-num { font-size: 13px; font-weight: 500; color: #666; margin-right: 20px; min-width: 20px; font-variant-numeric: tabular-nums; }
         .link-text { flex-grow: 1; }
         .link-title { font-size: 17px; font-weight: 500; letter-spacing: -0.2px; }
         .link-arrow { font-size: 18px; color: #444; margin-left: 15px; transition: transform 0.3s ease; }
         
-        /* Поворот стрелочки вниз при раскрытии */
-        .accordion-item.active .link-arrow { transform: rotate(90deg); color: var(--text-color); }
+        /* Анимация стрелки при раскрытии */
+        .accordion-item:hover .link-arrow, .accordion-item.active .link-arrow { transform: rotate(90deg); color: var(--text-color); }
         .link-item:hover .link-arrow { color: #888; }
 
         /* Скрытый блок с подробным описанием и кнопкой */
@@ -66,17 +66,18 @@
             overflow: hidden; 
             transition: max-height 0.3s ease-out, opacity 0.3s ease; 
             opacity: 0;
-            padding-left: 40px; /* Выравнивание под текст заголовка */
+            padding-left: 40px; 
         }
         
-        /* Класс активации скрытого блока */
-        .accordion-item.active .hidden-content { 
-            max-height: 500px; /* Достаточная высота для раскрытия */
+        /* Раскрытие срабатывает при наведении (hover) или принудительном классе active (для мобильных) */
+        .accordion-item:hover .hidden-content, .accordion-item.active .hidden-content { 
+            max-height: 600px; 
             opacity: 1;
             margin-top: 15px;
         }
 
         .extended-descr { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
+        .club-accent { color: #8c7b6e; font-weight: 600; margin-bottom: 10px; font-size: 15px; }
         
         /* Премиальная кнопка покупки внутри плашки */
         .buy-btn { 
@@ -84,7 +85,7 @@
             background: #ffffff; 
             color: #0d0d0d; 
             text-align: center; 
-            padding: 12px 24px; 
+            padding: 14px 24px; 
             border-radius: 8px; 
             font-size: 14px; 
             font-weight: 600; 
@@ -102,28 +103,35 @@
 <body>
 
     <div class="wrapper">
-        <!-- Шапка (Фото, Имя, Позиционирование) -->
+        <!-- Шапка (Фото, Имя, Ваше позиционирование) -->
         <header class="header">
             <img class="avatar" src="https://unsplash.com" alt="Светлана Гребенюк">
             <h1 class="title-name">Светлана<br>Гребенюк</h1>
-            <p class="subtitle">Пространство ресурса, состояния и раскрытия потенциала Души. Ты — свет.</p>
+            <p class="subtitle">Комплексное оздоровление, детокс, энергия и глубокий ресурс вашей Души 🌱</p>
         </header>
 
         <!-- Блоки-ссылки и интерактивные карточки -->
         <main class="links-list">
             
-            <!-- 01. Закрытый клуб -->
-            <a href="#" class="link-item" id="club-link">
+            <!-- 01. НОВАЯ Вкладка: Закрытый клуб с полным описанием и подпиской -->
+            <div class="accordion-item" onclick="toggleAccordion(this)">
                 <div class="main-row">
                     <span class="link-num">01</span>
                     <div class="link-text">
-                        <div class="link-title">Закрытый клуб «Свет Души»</div>
+                        <div class="link-title" style="color: #e6dfd9;">Закрытый клуб «Свет Души»</div>
                     </div>
-                    <span class="link-arrow">↗</span>
+                    <span class="link-arrow">➔</span>
                 </div>
-            </a>
+                <div class="hidden-content">
+                    <div class="club-accent">Пространство осознанной трансформации</div>
+                    <p class="extended-descr">
+                        Это кулуарное комьюнити для тех, кто готов разобрать свое здоровье по полочкам, вернуть высокий уровень энергии и раскрыть внутренний ресурс. Внутри клуба вас ждут регулярные разборы, практики детокса, эфиры по комплексному оздоровлению и поддерживающее поле единомышленников.
+                    </p>
+                    <a href="#" class="buy-btn" style="background: #8c7b6e; color: #fff;" onclick="event.stopPropagation(); alert('Здесь будет списываться ежемесячная подписка!'); return false;">Оформить подписку — 2 900 ₽ / мес</a>
+                </div>
+            </div>
 
-            <!-- 02. Интерактивная плашка: Мини-курс 1 -->
+            <!-- 02. Мини-курс 1 -->
             <div class="accordion-item" onclick="toggleAccordion(this)">
                 <div class="main-row">
                     <span class="link-num">02</span>
@@ -134,13 +142,13 @@
                 </div>
                 <div class="hidden-content">
                     <p class="extended-descr">
-                        Это глубокий практический материал для тех, кто устал искать одобрение снаружи. Вы получите пошаговый алгоритм, как обнаружить неиссякаемый источник силы и уверенности внутри себя, стабилизировать состояние и вернуть управление своей жизнью.
+                        Практический материал о том, как перестать искать стабильность снаружи и обнаружить источник силы внутри себя. Алгоритмы восстановления ментального и физического тонуса, работа с внутренним состоянием.
                     </p>
-                    <a href="#" class="buy-btn" id="course1-link" onclick="event.stopPropagation(); alert('Здесь будет переход на вашу оплату!'); return false;">Купить курс за 1 490 ₽</a>
+                    <a href="#" class="buy-btn" onclick="event.stopPropagation(); alert('Переход на оплату мини-курса'); return false;">Купить курс за 1 490 ₽</a>
                 </div>
             </div>
 
-            <!-- 03. Интерактивная плашка: Интенсив 2 -->
+            <!-- 03. Интенсив 2 -->
             <div class="accordion-item" onclick="toggleAccordion(this)">
                 <div class="main-row">
                     <span class="link-num">03</span>
@@ -151,14 +159,14 @@
                 </div>
                 <div class="hidden-content">
                     <p class="extended-descr">
-                        Интенсив-погружение, направленный на обнаружение и деструкцию чужих ментальных программ, страхов и установок. Практическая работа с подсознанием для освобождения заблокированной энергии и перехода на новый уровень масштаба личности.
+                        Глубокое погружение для обнаружения и деструкции чужих ментальных установок, страхов и блоков. Освобождаем заблокированную энергию и направляем её на реальный рост масштаба вашей личности.
                     </p>
-                    <a href="#" class="buy-btn" id="course2-link" onclick="event.stopPropagation(); alert('Здесь будет переход на вашу оплату!'); return false;">Купить интенсив за 1 990 ₽</a>
+                    <a href="#" class="buy-btn" onclick="event.stopPropagation(); alert('Переход на оплату интенсива'); return false;">Купить интенсив за 1 990 ₽</a>
                 </div>
             </div>
 
-            <!-- 04. Телеграм-канал -->
-            <a href="#" class="link-item" id="tg-link" target="_blank">
+            <!-- 04. Телеграм-канал (РАБОЧАЯ ССЫЛКА) -->
+            <a href="https://t.me/svetlana_grebenyuk" target="_blank" class="link-item">
                 <div class="main-row">
                     <span class="link-num">04</span>
                     <div class="link-text">
@@ -176,16 +184,18 @@
         </footer>
     </div>
 
-    <!-- Логика работы интерактивных плашек -->
+    <!-- Логика для мобильных устройств (разворачивание по тапу) -->
     <script>
         function toggleAccordion(element) {
-            let items = document.getElementsByClassName("accordion-item");
-            for (let i = 0; i < items.length; i++) {
-                if (items[i] !== element) {
-                    items[i].classList.remove("active");
+            if (window.innerWidth <= 768) { // Срабатывает только на телефонах
+                let items = document.getElementsByClassName("accordion-item");
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i] !== element) {
+                        items[i].classList.remove("active");
+                    }
                 }
+                element.classList.toggle("active");
             }
-            element.classList.toggle("active");
         }
     </script>
 </body>
