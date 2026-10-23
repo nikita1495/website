@@ -8,18 +8,159 @@
         :root {
             --bg-color: #0d0d0d;
             --text-color: #ffffff;
+            --accent-color: #8c7b6e; 
             --card-bg: rgba(255, 255, 255, 0.03);
             --card-border: rgba(255, 255, 255, 0.08);
         }
-        body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
-        .wrapper { width: 100%; max-width: 480px; }
-        .accordion-doc { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; margin-bottom: 16px; cursor: pointer; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        
+        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; }
+        
+        .back-link { color: #666; text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; transition: 0.2s; }
+        .back-link:hover { color: #fff; }
+
+        .page-title { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 30px; }
+
+        /* Список документов */
+        .doc-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+        
+        .accordion-doc { 
+            display: flex; 
+            flex-direction: column;
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            border-radius: 12px; 
+            padding: 24px; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .accordion-doc:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); }
+
+        .doc-header { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .doc-name { font-size: 17px; font-weight: 500; letter-spacing: -0.2px; }
+        .doc-arrow { font-size: 18px; color: #444; transition: transform 0.3s ease; }
+        
+        .accordion-doc.active .doc-arrow { transform: rotate(90deg); color: var(--text-color); }
+
+        /* Внутренний контейнер текста */
+        .doc-body { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease-out, opacity 0.3s ease; 
+            opacity: 0;
+        }
+        .accordion-doc.active .doc-body { 
+            max-height: 400px; /* Ограничиваем высоту для удобства скролла внутри */
+            overflow-y: auto;  /* Добавляем прокрутку для длинного текста */
+            opacity: 1;
+            margin-top: 20px;
+            padding-right: 5px;
+        }
+
+        .doc-text { font-size: 13px; color: #aaa; line-height: 1.6; }
+        .doc-text h3 { color: #fff; font-size: 14px; margin: 15px 0 5px 0; font-weight: 600; }
+        .doc-text p { margin-bottom: 10px; }
+
+        /* Скроллбар внутри документов */
+        .doc-body::-webkit-scrollbar { width: 4px; }
+        .doc-body::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 2px; }
+
+        /* Блок реквизитов */
+        .requisites { background: rgba(255, 255, 255, 0.01); border: 1px dashed var(--card-border); border-radius: 12px; padding: 24px; font-size: 14px; color: #aaa; line-height: 1.8; }
+        .requisites strong { color: #fff; font-weight: 500; display: block; margin-bottom: 10px; font-size: 16px; }
+        .req-line { border-bottom: 1px dashed rgba(255,255,255,0.03); padding: 6px 0; display: flex; justify-content: space-between; }
+        .req-line span:last-child { color: #fff; text-align: right; }
+
+        .footer { text-align: center; margin-top: 40px; padding-top: 40px; font-size: 12px; color: #444; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
+
     <div class="wrapper">
-        <h1>Правовая информация</h1>
-        <!-- Блоки документов: Политика конфиденциальности, Оферта, Cookie и реквизиты -->
+        <a href="index.html" class="back-link">← На главную</a>
+
+        <h1 class="page-title">Правовая информация</h1>
+
+        <div class="doc-list">
+            
+            <!-- БЛОК 1: ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ -->
+            <div class="accordion-doc" onclick="toggleDoc(this)">
+                <div class="doc-header">
+                    <span class="doc-name">Политика конфиденциальности</span>
+                    <span class="doc-arrow">➔</span>
+                </div>
+                <div class="doc-body" onclick="event.stopPropagation();">
+                    <div class="doc-text">
+                        <p>Настоящая Политика конфиденциальности действует в отношении всей информации, которую проект Светланы Гребенюк может получить о Пользователе во время использования Сайта.</p>
+                        <h3>1. ОПРЕДЕЛЕНИЕ ТЕРМИНОВ</h3>
+                        <p>1.1. «Персональные данные» — любая информация, относящаяся прямо или косвенно к определенному физическому лицу.</p>
+                        <p>1.2. «Обработка персональных данных» — любое действие со сведениями Пользователя (сбор, хранение, уточнение, удаление).</p>
+                        <h3>2. ПРЕДМЕТ ПОЛИТИКИ</h3>
+                        <p>2.1. Пользователь, оставляя данные на сайте при оплате (ФИО, телефон, e-mail), соглашается на их обработку в рамках Федерального закона № 152-ФЗ.</p>
+                        <p>2.2. Администрация обеспечивает полную конфиденциальность и защиту персональных данных от несанкционированного доступа.</p>
+                        <h3>3. ЦЕЛИ СБОРА ИНФОРМАЦИИ</h3>
+                        <p>3.1. Идентификация Пользователя для предоставления доступа к закрытому клубу и обучающим материалам, а также обработка входящих финансовых транзакций.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- БЛОК 2: ПУБЛИЧНЫЙ ДОГОВОР (ОФЕРТА) -->
+            <div class="accordion-doc" onclick="toggleDoc(this)">
+                <div class="doc-header">
+                    <span class="doc-name">Публичный договор (Оферта)</span>
+                    <span class="doc-arrow">➔</span>
+                </div>
+                <div class="doc-body" onclick="event.stopPropagation();">
+                    <div class="doc-text">
+                        <p>Настоящий документ представляет собой официальное публичное предложение (Оферту) самозанятого лица Гребенюк Светланы об оказании платных информационно-консультационных услуг.</p>
+                        
+                        <h3>1. ПРЕДМЕТ ДОГОВОРА</h3>
+                        <p>1.1. Исполнитель обязуется предоставить Пользователю доступ к обучающим материалам (мини-курсам) и/или доступ к закрытому интернет-сообществу (Telegram-каналу Закрытого клуба), а Пользователь обязуется оплатить данные услуги согласно действующим тарифам.</p>
+                        
+                        <h3>2. АКЦЕПТ ОФЕРТЫ И ЗАКЛЮЧЕНИЕ ДОГОВОРА</h3>
+                        <p>2.1. Полным и безоговорочным принятием (акцептом) условий настоящей Оферты считается факт совершения Пользователем оплаты услуг на Сайте. С момента оплаты договор считается заключенным.</p>
+                        
+                        <h3>3. УСЛОВИЯ ПРЕДОСТАВЛЕНИЯ ДОСТУПА И ПОДПИСКИ</h3>
+                        <p>3.1. Доступ к Закрытому клубу предоставляется на условиях регулярной подписки (рекуррентных платежей). Оплата списывается автоматически каждые 30 или 15 календарных дней в зависимости от выбранного тарифа.</p>
+                        <p>3.2. Пользователь имеет право в любой момент отменить автоматическое продление подписки через личный кабинет платежного сервиса или через обращение в службу поддержки.</p>
+                        
+                        <h3>4. ПРАВИЛА ВОЗВРАТА СРЕДСТВ</h3>
+                        <p>4.1. Услуга считается полностью и качественно оказанной Исполнителем в момент предоставления Пользователю ссылки на доступ к материалам или закрытому Telegram-каналу. </p>
+                        <p>4.2. На основании п. 4.1, возврат денежных средств за уже активированные периоды доступа или пройденные мини-курсы не предусмотрен.</p>
+                        
+                        <h3>5. ОТВЕТСТВЕННОСТЬ СТОРОН</h3>
+                        <p>5.1. Все материалы являются интеллектуальной собственностью Исполнителя. Копирование, тиражирование или перепродажа информации строго запрещены и преследуются по закону РФ.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Реквизиты самозанятого -->
+        <div class="requisites">
+            <strong>Физическое лицо в статусе самозанятого</strong>
+            <div class="req-line"><span>ФИО:</span> <span>Гребенюк Светлана</span></div>
+            <div class="req-line"><span>ИНН:</span> <span>123456789012</span></div>
+            <div class="req-line"><span>Регион:</span> <span>Российская Федерация</span></div>
+            <div class="req-line"><span>E-mail:</span> <span>your-email@mail.ru</span></div>
+        </div>
+
+        <footer class="footer">
+            Светлана Гребенюк &copy; 2026
+        </footer>
     </div>
+
+    <script>
+        function toggleDoc(element) {
+            let items = document.getElementsByClassName("accordion-doc");
+            for (let i = 0; i < items.length; i++) {
+                if (items[i] !== element) {
+                    items[i].classList.remove("active");
+                }
+            }
+            element.classList.toggle("active");
+        }
+    </script>
 </body>
 </html>
