@@ -16,7 +16,7 @@
         body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         
         /* Контейнер сайта */
-        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; }
+        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; min-height: calc(100vh - 80px); }
 
         /* Шапка */
         .header { text-align: left; margin-bottom: 40px; padding-left: 5px; }
@@ -25,7 +25,7 @@
         .subtitle { font-size: 14px; color: #888; font-weight: 400; line-height: 1.5; }
 
         /* Список ссылок и интерактивных карточек */
-        .links-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 60px; }
+        .links-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
         
         /* Базовый стиль для всех плашек */
         .link-item, .accordion-item { 
@@ -45,7 +45,7 @@
         .link-item:hover, .accordion-item:hover, .accordion-item.active { 
             background: rgba(255, 255, 255, 0.05); 
             border-color: rgba(255, 255, 255, 0.2); 
-            transform: scale(1.02); /* Эффект «становится больше» */
+            transform: scale(1.02); 
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
         
@@ -69,7 +69,6 @@
             padding-left: 40px; 
         }
         
-        /* Раскрытие срабатывает при наведении (hover) или принудительном классе active (для мобильных) */
         .accordion-item:hover .hidden-content, .accordion-item.active .hidden-content { 
             max-height: 600px; 
             opacity: 1;
@@ -79,7 +78,7 @@
         .extended-descr { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
         .club-accent { color: #8c7b6e; font-weight: 600; margin-bottom: 10px; font-size: 15px; }
         
-        /* Премиальная кнопка покупки внутри плашки */
+        /* Премиальная кнопка покупки */
         .buy-btn { 
             display: inline-block; 
             background: #ffffff; 
@@ -96,24 +95,28 @@
         }
         .buy-btn:hover { background: #e6e6e6; }
 
-        /* Подвал */
-        .footer { text-align: center; font-size: 12px; color: #444; margin-top: auto; letter-spacing: 0.5px; }
+        /* Юридический подвал (Футер) */
+        .footer { text-align: center; margin-top: auto; padding-top: 40px; }
+        .legal-info { font-size: 11px; color: #555; margin-bottom: 10px; line-height: 1.4; }
+        .legal-links { display: flex; justify-content: center; gap: 15px; }
+        .legal-links a { font-size: 11px; color: #888; text-decoration: none; border-bottom: 1px dashed #444; transition: 0.2s; }
+        .legal-links a:hover { color: #fff; border-bottom-color: #fff; }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
-        <!-- Шапка (Фото, Имя, Ваше позиционирование) -->
+        <!-- Шапка -->
         <header class="header">
             <img class="avatar" src="https://unsplash.com" alt="Светлана Гребенюк">
             <h1 class="title-name">Светлана<br>Гребенюк</h1>
             <p class="subtitle">Комплексное оздоровление, детокс, энергия и глубокий ресурс вашей Души 🌱</p>
         </header>
 
-        <!-- Блоки-ссылки и интерактивные карточки -->
+        <!-- Блоки-ссылки -->
         <main class="links-list">
             
-            <!-- 01. НОВАЯ Вкладка: Закрытый клуб с полным описанием и подпиской -->
+            <!-- 01. Закрытый клуб -->
             <div class="accordion-item" onclick="toggleAccordion(this)">
                 <div class="main-row">
                     <span class="link-num">01</span>
@@ -165,8 +168,8 @@
                 </div>
             </div>
 
-            <!-- 04. Телеграм-канал (РАБОЧАЯ ССЫЛКА) -->
-            <a href="https://t.me/svetlana_grebenyuk" target="_blank" class="link-item">
+            <!-- 04. Телеграм-канал -->
+            <a href="https://t.me" target="_blank" class="link-item">
                 <div class="main-row">
                     <span class="link-num">04</span>
                     <div class="link-text">
@@ -178,25 +181,25 @@
 
         </main>
 
-        <!-- Подвал -->
+        <!-- Новая Юридическая панель внизу сайта -->
         <footer class="footer">
-            Светлана Гребенюк &copy; 2026
+            <!-- Замените ИНН и ФИО на свои реальные данные -->
+            <div class="legal-info">
+                Самозанятая Гребенюк Светлана<br>
+                ИНН: 123456789012 | СЛУЖБА ПОДДЕРЖКИ: your-email@mail.ru
+            </div>
+            <div class="legal-links">
+                <!-- Вставьте ваши ссылки на Google Docs вместо знака # -->
+                <a href="#" target="_blank">Публичная оферта</a>
+                <a href="#" target="_blank">Политика конфиденциальности</a>
+            </div>
         </footer>
     </div>
 
-    <!-- Логика для мобильных устройств (разворачивание по тапу) -->
     <script>
         function toggleAccordion(element) {
-            if (window.innerWidth <= 768) { // Срабатывает только на телефонах
+            if (window.innerWidth <= 768) {
                 let items = document.getElementsByClassName("accordion-item");
                 for (let i = 0; i < items.length; i++) {
-                    if (items[i] !== element) {
-                        items[i].classList.remove("active");
-                    }
-                }
-                element.classList.toggle("active");
-            }
-        }
-    </script>
-</body>
-</html>
+                    if (items[i] !== element) {items[i].classList.remove("active");
+                                              }}element.classList.toggle("active");}}
