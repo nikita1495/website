@@ -5,44 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Политика использования файлов Cookie | Светлана Гребенюк</title>
     <style>
-        /* Стиль полностью совпадает с предыдущими файлами для целостности дизайна */
-        :root { --bg-color: #0d0d0d; --text-color: #ffffff; --accent-color: #8c7b6e; --card-border: rgba(255, 255, 255, 0.08); }
+        :root { 
+            --bg-color: #aa8a73; /* Благородный песочно-кофейный фон */
+            --text-color: #32251d; /* Глубокий шоколадный цвет текста */
+            --accent-color: #5d4638; 
+            --card-border: rgba(50, 37, 29, 0.15); 
+        }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .wrapper { width: 100%; max-width: 550px; display: flex; flex-direction: column; }
-        .back-link { color: #666; text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; }
-        .back-link:hover { color: #fff; }
+        
+        .wrapper { width: 100%; max-width: 550px; display: flex; flex-direction: column; min-height: calc(100vh - 80px); }
+        
+        /* Кнопка назад */
+        .back-link { color: rgba(50, 37, 29, 0.6); text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; transition: 0.2s; font-weight: 500; }
+        .back-link:hover { color: var(--text-color); }
+        
         .page-title { font-size: 28px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 40px; line-height: 1.2; }
-        .legal-content { font-size: 14px; color: #aaa; line-height: 1.7; }
-        .legal-content h2 { color: #fff; font-size: 18px; margin: 30px 0 12px 0; font-weight: 600; }
+        
+        /* Юридический текст */
+        .legal-content { font-size: 14px; color: rgba(50, 37, 29, 0.9); line-height: 1.7; }
+        .legal-content h2 { color: var(--text-color); font-size: 18px; margin: 30px 0 12px 0; font-weight: 600; letter-spacing: -0.2px; }
         .legal-content p { margin-bottom: 12px; text-align: justify; }
-        .legal-footer { margin-top: 50px; padding-top: 30px; border-top: 1px dashed var(--card-border); font-size: 13px; color: #666; }
+        
+        /* Подвал */
+        .legal-footer { margin-top: auto; padding-top: 30px; border-top: 1px dashed var(--card-border); font-size: 13px; color: rgba(50, 37, 29, 0.6); line-height: 1.5; }
     </style>
 </head>
 <body>
 
     <div class="wrapper">
+        <!-- Ссылка возврата на главный сайт -->
         <a href="index.html" class="back-link">← На главную</a>
 
         <h1 class="page-title">Политика использования файлов cookie</h1>
 
-        Начало блока
         <div class="legal-content">
             <h2>1. Что такое файлы cookie?</h2>
-            <p></p>
+            <p>Файлы cookie (куки) — это небольшие текстовые файлы, которые отправляются на ваше устройство (компьютер, планшет или смартфон) веб-сервером, когда вы посещаете страницы сайта. Они сохраняются в памяти вашего браузера и позволяют распознавать ваше устройство при повторных заходах, запоминая ваши предпочтения.</p>
 
             <h2>2. Как сайт использует файлы cookie</h2>
-     
+            <p>Настоящий сайт использует файлы cookie исключительно для обеспечения корректной, быстрой и стабильной работы его интерактивных элементов. В частности, технические куки необходимы для функционирования интерактивных выпадающих плашек (аккордеонов) на главной странице, анимации кнопок переходов, а также для правильной обработки последующих безопасных платежных сессий в рамках выбранных вами тарифов.</p>
+
             <h2>3. Как управлять файлами cookie</h2>
+            <p>Вы можете в любой момент ограничить, заблокировать или полностью удалить файлы cookie через настройки безопасности вашего веб-браузера. Обратите внимание, что в случае полного отключения поддержки куки в браузере, некоторые интерактивные функции и дизайн-эффекты нашего сайта (например, плавное раскрытие описаний мини-курсов и программ закрытого клуба) могут временно отображаться некорректно.</p>
         </div>
-        Выше вставить всю информацию!!!! 
- Конец блока!
 
         <footer class="legal-footer">
-            Физлицо в статусе самозанятого: Гребенюк Светлана Анатольевна
+            Физическое лицо в статусе самозанятого: Гребенюк Светлана Анатольевна<br>
+            Проект: nikita1495.github.io/website/
         </footer>
     </div>
 
 </body>
 </html>
-
