@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Правовая информация | Светлана Гребенюк</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --text-color: #ffffff;
+            --accent-color: #8c7b6e; 
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        
+        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; }
+        
+        .back-link { color: #666; text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; transition: 0.2s; }
+        .back-link:hover { color: #fff; }
+
+        .page-title { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; margin-bottom: 30px; }
+
+        /* Список документов */
+        .doc-list { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+        .doc-item { display: flex; justify-content: space-between; align-items: center; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; text-decoration: none; color: var(--text-color); transition: 0.2s; }
+        .doc-item:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15); }
+        .doc-name { font-size: 15px; font-weight: 500; }
+        .doc-arrow { color: #444; font-size: 16px; }
+        .doc-item:hover .doc-arrow { color: #888; }
+
+        /* Блок реквизитов */
+        .requisites { background: rgba(255, 255, 255, 0.01); border: 1px dashed var(--card-border); border-radius: 12px; padding: 24px; font-size: 14px; color: #aaa; line-height: 1.8; }
+        .requisites strong { color: #fff; font-weight: 500; display: block; margin-bottom: 10px; font-size: 16px; }
+        .req-line { border-bottom: 1px dashed rgba(255,255,255,0.03); padding: 6px 0; display: flex; justify-content: space-between; }
+        .req-line span:last-child { color: #fff; text-align: right; }
+
+        .footer { text-align: center; margin-top: auto; padding-top: 40px; font-size: 12px; color: #444; letter-spacing: 0.5px; }
+    </style>
+</head>
+<body>
+
+    <div class="wrapper">
+        <!-- Ссылка назад -->
+        <a href="index.html" class="back-link">← На главную</a>
+
+        <h1 class="page-title">Правовая информация</h1>
+
+        <!-- Ссылки на сами файлы документов (Гугл докс) -->
+        <div class="doc-list">
+            <!-- Замените знак # на ваши реальные ссылки на Google Документы -->
+            <a href="#" target="_blank" class="doc-item">
+                <span class="doc-name">Политика конфиденциальности</span>
+                <span class="doc-arrow">↗</span>
+            </a>
+            <a href="#" target="_blank" class="doc-item">
+                <span class="doc-name">Публичный договор (Оферта)</span>
+                <span class="doc-arrow">↗</span>
+            </a>
+            <a href="#" target="_blank" class="doc-item">
+                <span class="doc-name">Политика в отношении файлов cookie</span>
+                <span class="doc-arrow">↗</span>
+            </a>
+        </div>
+
+        <!-- Карточка официальных реквизитов самозанятого -->
+        <div class="requisites">
+            <strong>Физическое лицо в статусе самозанятого</strong>
+            <div class="req-line"><span>ФИО:</span> <span>Гребенюк Светлана</span></div>
+            <!-- Напишите здесь ваш реальный ИНН -->
+            <div class="req-line"><span>ИНН:</span> <span>123456789012</span></div>
+            <!-- Укажите ваш город/регион регистрации самозанятости -->
+            <div class="req-line"><span>Регион:</span> <span>Российская Федерация</span></div>
+            <!-- Ваша рабочая почта поддержки -->
+            <div class="req-line"><span>E-mail:</span> <span>your-email@mail.ru</span></div>
+        </div>
+
+        <footer class="footer">
+            Светлана Гребенюк &copy; 2026
+        </footer>
+    </div>
+
+</body>
+</html>
