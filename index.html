@@ -3,114 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Светлана Гребенюк | Официальный сайт</title>
+    <title>Светлана Гребенюк</title>
     <style>
         :root {
-            --bg-color: #fcfbfa;
-            --text-color: #2c2a29;
-            --accent-color: #8c7b6e;
-            --card-bg: #ffffff;
+            --bg-color: #0d0d0d; /* Дорогой глубокий черный фон */
+            --text-color: #ffffff; /* Белый текст */
+            --accent-color: #8c7b6e; 
+            --card-bg: rgba(255, 255, 255, 0.03); /* Едва заметные стильные плашки */
+            --card-border: rgba(255, 255, 255, 0.08);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Helvetica Neue', Arial, sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; padding: 20px; display: flex; flex-direction: column; align-items: center; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         
-        /* Шапка сайта */
-        .profile-header { text-align: center; margin-top: 20px; margin-bottom: 30px; max-width: 450px; }
-        .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-color); margin-bottom: 15px; }
-        .name { font-size: 24px; font-weight: 500; letter-spacing: 1px; margin-bottom: 5px; }
-        .bio { font-size: 14px; color: #666; font-style: italic; }
+        /* Контейнер сайта */
+        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; }
 
-        /* Вкладки (Навигация) */
-        .tabs-nav { display: flex; justify-content: center; width: 100%; max-width: 450px; background: #eeeae6; border-radius: 25px; padding: 4px; margin-bottom: 25px; }
-        .tab-btn { flex: 1; border: none; background: none; padding: 12px; font-size: 14px; cursor: pointer; border-radius: 21px; transition: 0.3s; color: #555; }
-        .tab-btn.active { background: var(--accent-color); color: white; font-weight: bold; }
+        /* Шапка в стиле Карамовой */
+        .header { text-align: left; margin-bottom: 40px; padding-left: 5px; }
+        .avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 1px solid var(--card-border); }
+        .title-name { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 10px; }
+        .subtitle { font-size: 14px; color: #888; font-weight: 400; line-height: 1.5; }
 
-        /* Контент вкладок */
-        .tab-content { display: none; width: 100%; max-width: 450px; }
-        .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
-
-        /* Карточки товаров/услуг */
-        .card { background: var(--card-bg); border-radius: 16px; padding: 25px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid #f0ede9; text-align: center; }
-        .card h3 { font-size: 20px; margin-bottom: 10px; color: var(--text-color); }
-        .card p { font-size: 14px; color: #666; margin-bottom: 20px; }
-        .price { font-size: 22px; font-weight: bold; color: var(--accent-color); margin-bottom: 20px; display: block; }
+        /* Список премиум-ссылок */
+        .links-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 60px; }
         
-        /* Кнопки */
-        .btn { display: inline-block; width: 100%; padding: 14px; background: var(--text-color); color: white; text-decoration: none; border-radius: 10px; font-weight: bold; font-size: 15px; transition: 0.2s; border: none; cursor: pointer; }
-        .btn:hover { opacity: 0.9; }
-        .btn-tg { background: #229ED9; }
+        .link-item { 
+            display: flex; 
+            align-items: center; 
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            border-radius: 12px; 
+            padding: 24px; 
+            text-decoration: none; 
+            color: var(--text-color); 
+            transition: all 0.2s ease; 
+        }
+        .link-item:hover { background: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15); transform: translateY(-1px); }
+        
+        /* Нумерация блоков */
+        .link-num { font-size: 13px; font-weight: 500; color: #666; margin-right: 20px; min-width: 20px; font-variant-numeric: tabular-nums; }
+        
+        /* Текст внутри плашки */
+        .link-text { flex-grow: 1; }
+        .link-title { font-size: 17px; font-weight: 500; margin-bottom: 4px; letter-spacing: -0.2px; }
+        .link-descr { font-size: 13px; color: #888; font-weight: 400; line-height: 1.4; }
+        
+        /* Стрелочка справа */
+        .link-arrow { font-size: 18px; color: #444; margin-left: 15px; transition: 0.2s; }
+        .link-item:hover .link-arrow { color: #888; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* Подвал */
+        .footer { text-align: center; font-size: 12px; color: #444; margin-top: auto; letter-spacing: 0.5px; }
     </style>
 </head>
 <body>
 
-    <!-- Шапка профиля -->
-    <div class="profile-header">
-        <!-- Замените link_to_your_photo.jpg на прямую ссылку на ваше фото -->
-        <img class="avatar" src="https://unsplash.com" alt="Светлана Гребенюк">
-        <h1 class="name">Светлана Гребенюк</h1>
-        <p class="bio">Ресурс. Состояние. Потенциал. Ты — свет своей Души❤️</p>
+    <div class="wrapper">
+        <!-- Шапка (Фото, Имя, Ваше позиционирование) -->
+        <header class="header">
+            <!-- Замените эту ссылку на прямую ссылку на ваше фото, когда оно будет готово -->
+            <img class="avatar" src="https://unsplash.com" alt="Светлана Гребенюк">
+            <h1 class="title-name">Светлана<br>Гребенюк</h1>
+            <p class="subtitle">Пространство ресурса, состояния и раскрытия потенциала Души. Ты — свет.</p>
+        </header>
+
+        <!-- Блоки-ссылки в точности как у Карамовой -->
+        <main class="links-list">
+            
+            <!-- 01. Закрытый клуб -->
+            <a href="ССЫЛКА_НА_ОПЛАТУ_ПОДПИСКИ" class="link-item">
+                <span class="link-num">01</span>
+                <div class="link-text">
+                    <div class="link-title">Закрытый клуб «Свет Души»</div>
+                    <div class="link-descr">Пространство для своих. Ежемесячная подписка, практики и эфиры.</div>
+                </div>
+                <span class="link-arrow">↗</span>
+            </a>
+
+            <!-- 02. Первый мини-курс -->
+            <a href="ССЫЛКА_НА_ОПЛАТУ_КУРСА_1" class="link-item">
+                <span class="link-num">02</span>
+                <div class="link-text">
+                    <div class="link-title">Мини-курс «Внутренний ресурс»</div>
+                    <div class="link-descr">Главный материал. Как обнаружить источник силы внутри себя.</div>
+                </div>
+                <span class="link-arrow">↗</span>
+            </a>
+
+            <!-- 03. Второй мини-курс -->
+            <a href="ССЫЛКА_НА_ОПЛАТУ_КУРСА_2" class="link-item">
+                <span class="link-num">03</span>
+                <div class="link-text">
+                    <div class="link-title">Интенсив «Освобождение от программ»</div>
+                    <div class="link-descr">Глубокая проработка ментальных установок и блоков.</div>
+                </div>
+                <span class="link-arrow">↗</span>
+            </a>
+
+            <!-- 04. Телеграм-канал -->
+            <a href="https://t.me" target="_blank" class="link-item">
+                <span class="link-num">04</span>
+                <div class="link-text">
+                    <div class="link-title">Телеграм-канал</div>
+                    <div class="link-descr">Мысли вслух, аудио-настройки и живое общение каждый день.</div>
+                </div>
+                <span class="link-arrow">↗</span>
+            </a>
+
+        </main>
+
+        <!-- Подвал -->
+        <footer class="footer">
+            Светлана Гребенюк &copy; 2026
+        </footer>
     </div>
 
-    <!-- Переключатель вкладок -->
-    <div class="tabs-nav">
-        <button class="tab-btn active" onclick="openTab(event, 'club')">Закрытый клуб</button>
-        <button class="tab-btn" onclick="openTab(event, 'courses')">Мини-курсы</button>
-        <button class="tab-btn" onclick="openTab(event, 'telegram')">Telegram</button>
-    </div>
-
-    <!-- Вкладка 1: Подписка (Закрытый клуб) -->
-    <div id="club" class="tab-content active">
-        <div class="card">
-            <h3>Ежемесячная подписка</h3>
-            <p>Вход в закрытый клуб "Свет Души". Практики, медитации, работа с состоянием и раскрытие вашего истинного потенциала каждый день.</p>
-            <span class="price">2 900 ₽ / мес.</span>
-            <!-- Сюда вставляется ссылка на оплату -->
-            <a href="ССЫЛКА_НА_ОПЛАТУ_ПОДПИСКИ" class="btn">Оформить подписку</a>
-        </div>
-    </div>
-
-    <!-- Вкладка 2: Мини-курсы -->
-    <div id="courses" class="tab-content">
-        <div class="card">
-            <h3>Мини-курс «Внутренний ресурс»</h3>
-            <p>3 практических урока о том, как перестать искать одобрение снаружи и обнаружить источник силы внутри себя.</p>
-            <span class="price">1 490 ₽</span>
-            <a href="ССЫЛКА_НА_ОПЛАТУ_КУРСА_1" class="btn">Купить курс</a>
-        </div>
-        <div class="card">
-            <h3>Интенсив «Освобождение от программ»</h3>
-            <p>Глубокая проработка ментальных установок, мешающих вашему росту и блокирующих энергию.</p>
-            <span class="price">1 990 ₽</span>
-            <a href="ССЫЛКА_НА_ОПЛАТУ_КУРСА_2" class="btn">Купить интенсив</a>
-        </div>
-    </div>
-
-    <!-- Вкладка 3: Telegram канал -->
-    <div id="telegram" class="tab-content">
-        <div class="card">
-            <h3>Мой Telegram-канал «Крик Души»</h3>
-            <p>Ежедневные мысли, аудио-настройки, живое общение и поддерживающее пространство для вашего душевного ресурса.</p>
-            <!-- Замените ССЫЛКУ на ваш реальный канал -->
-            <a href="https://t.me/svetlana_grebenyuk" target="_blank" class="btn btn-tg">Присоединиться к каналу</a>
-        </div>
-    </div>
-
-    <!-- Скрипт для работы вкладок -->
-    <script>
-        function openTab(evt, tabId) {
-            let tabcontent = document.getElementsByClassName("tab-content");
-            for (let i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].classList.remove("active");
-            }
-            let tablinks = document.getElementsByClassName("tab-btn");
-            for (let i = 0; i < tablinks.length; i++) {
-                tablinks[i].classList.remove("active");
-            }
-            document.getElementById(tabId).classList.add("active");
-            evt.currentTarget.classList.add("active");
-        }
-    </script>
 </body>
 </html>
