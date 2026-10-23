@@ -6,34 +6,96 @@
     <title>Светлана Гребенюк</title>
     <style>
         :root {
-            --bg-color: #0d0d0d;
-            --text-color: #ffffff;
+            --bg-color: #0d0d0d; /* Дорогой глубокий черный фон */
+            --text-color: #ffffff; /* Белый текст */
             --accent-color: #8c7b6e; 
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-bg: rgba(255, 255, 255, 0.03); /* Стильные плашки */
             --card-border: rgba(255, 255, 255, 0.08);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+        
+        /* Контейнер сайта */
         .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; min-height: calc(100vh - 80px); }
+
+        /* Шапка */
         .header { text-align: left; margin-bottom: 40px; padding-left: 5px; }
         .avatar { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-bottom: 20px; border: 1px solid var(--card-border); }
         .title-name { font-size: 32px; font-weight: 600; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 10px; }
         .subtitle { font-size: 14px; color: #888; font-weight: 400; line-height: 1.5; }
+
+        /* Список ссылок и интерактивных карточек */
         .links-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-        .link-item, .accordion-item { display: flex; flex-direction: column; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; text-decoration: none; color: var(--text-color); transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); cursor: pointer; }
-        .link-item:hover, .accordion-item:hover, .accordion-item.active { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); transform: scale(1.02); box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        
+        /* Базовый стиль для всех плашек */
+        .link-item, .accordion-item { 
+            display: flex; 
+            flex-direction: column;
+            background: var(--card-bg); 
+            border: 1px solid var(--card-border); 
+            border-radius: 12px; 
+            padding: 24px; 
+            text-decoration: none; 
+            color: var(--text-color); 
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            cursor: pointer;
+        }
+
+        /* Эффект увеличения и раскрытия при наведении */
+        .link-item:hover, .accordion-item:hover, .accordion-item.active { 
+            background: rgba(255, 255, 255, 0.05); 
+            border-color: rgba(255, 255, 255, 0.2); 
+            transform: scale(1.02); /* Эффект «становится больше» */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        
+        /* Главная строка внутри плашки */
         .main-row { display: flex; align-items: center; width: 100%; }
         .link-num { font-size: 13px; font-weight: 500; color: #666; margin-right: 20px; min-width: 20px; font-variant-numeric: tabular-nums; }
         .link-text { flex-grow: 1; }
         .link-title { font-size: 17px; font-weight: 500; letter-spacing: -0.2px; }
         .link-arrow { font-size: 18px; color: #444; margin-left: 15px; transition: transform 0.3s ease; }
+        
+        /* Анимация стрелки при раскрытии */
         .accordion-item:hover .link-arrow, .accordion-item.active .link-arrow { transform: rotate(90deg); color: var(--text-color); }
         .link-item:hover .link-arrow { color: #888; }
-        .hidden-content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, opacity 0.3s ease; opacity: 0; padding-left: 40px; }
-        .accordion-item:hover .hidden-content, .accordion-item.active .hidden-content { max-height: 600px; opacity: 1; margin-top: 15px; }
+
+        /* Скрытый блок с подробным описанием и кнопкой */
+        .hidden-content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease-out, opacity 0.3s ease; 
+            opacity: 0;
+            padding-left: 40px; 
+        }
+        
+        /* Раскрытие срабатывает при наведении (hover) или принудительном классе active (для мобильных) */
+        .accordion-item:hover .hidden-content, .accordion-item.active .hidden-content { 
+            max-height: 600px; 
+            opacity: 1;
+            margin-top: 15px;
+        }
+
         .extended-descr { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
-        .buy-btn { display: inline-block; background: #ffffff; color: #0d0d0d; text-align: center; padding: 14px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s; border: none; width: 100%; }
+        
+        /* Премиальная кнопка перехода */
+        .buy-btn { 
+            display: inline-block; 
+            background: #ffffff; 
+            color: #0d0d0d; 
+            text-align: center; 
+            padding: 14px 24px; 
+            border-radius: 8px; 
+            font-size: 14px; 
+            font-weight: 600; 
+            text-decoration: none; 
+            transition: background 0.2s; 
+            border: none;
+            width: 100%;
+        }
         .buy-btn:hover { background: #e6e6e6; }
+
+        /* Юридический подвал */
         .footer { text-align: center; margin-top: auto; padding-top: 40px; }
         .legal-info { font-size: 11px; color: #555; margin-bottom: 10px; line-height: 1.4; }
         .legal-links { display: flex; justify-content: center; gap: 15px; }
@@ -42,32 +104,48 @@
     </style>
 </head>
 <body>
+
     <div class="wrapper">
+        <!-- Шапка -->
         <header class="header">
             <img class="avatar" src="https://unsplash.com" alt="Светлана Гребенюк">
             <h1 class="title-name">Светлана<br>Гребенюк</h1>
             <p class="subtitle">Комплексное оздоровление, детокс, энергия и глубокий ресурс вашей Души 🌱</p>
         </header>
 
+        <!-- Блоки-ссылки -->
         <main class="links-list">
-            <!-- 01. Ссылка ведет строго на страницу клуба -->
-            <a href="club.html" class="link-item">
+            
+            <!-- 01. ВОЗВРАЩЕННАЯ интерактивная плашка Закрытого клуба -->
+            <div class="accordion-item" onclick="toggleAccordion(this)">
                 <div class="main-row">
                     <span class="link-num">01</span>
-                    <div class="link-text"><div class="link-title" style="color: #e6dfd9;">Закрытый клуб «Свет Души»</div></div>
-                    <span class="link-arrow">↗</span>
+                    <div class="link-text">
+                        <div class="link-title" style="color: #e6dfd9;">Закрытый клуб «Свет Души»</div>
+                    </div>
+                    <span class="link-arrow">➔</span>
                 </div>
-            </a>
+                <div class="hidden-content">
+                    <p class="extended-descr">
+                        Кулуарное комьюнити для тех, кто готов разобрать свое здоровье по полочкам, вернуть высокий уровень энергии и раскрыть внутренний ресурс. Практики детокса, эфиры по оздоровлению и поддерживающее поле.
+                    </p>
+                    <a href="club.html" class="buy-btn" style="background: #8c7b6e; color: #fff;" onclick="event.stopPropagation();">Узнать подробнее и вступить ➔</a>
+                </div>
+            </div>
 
             <!-- 02. Мини-курс 1 -->
             <div class="accordion-item" onclick="toggleAccordion(this)">
                 <div class="main-row">
                     <span class="link-num">02</span>
-                    <div class="link-text"><div class="link-title">Мини-курс «Внутренний ресурс»</div></div>
+                    <div class="link-text">
+                        <div class="link-title">Мини-курс «Внутренний ресурс»</div>
+                    </div>
                     <span class="link-arrow">➔</span>
                 </div>
                 <div class="hidden-content">
-                    <p class="extended-descr">Практический материал о том, как перестать искать стабильность снаружи и обнаружить источник силы внутри себя. Алгоритмы восстановления ментального и физического тонуса.</p>
+                    <p class="extended-descr">
+                        Практический материал о том, как перестать искать стабильность снаружи и обнаружить источник силы внутри себя. Алгоритмы восстановления ментального и физического тонуса, работа с внутренним состоянием.
+                    </p>
                     <a href="#" class="buy-btn" onclick="event.stopPropagation(); alert('Переход на оплату мини-курса'); return false;">Купить курс за 1 490 ₽</a>
                 </div>
             </div>
@@ -76,11 +154,15 @@
             <div class="accordion-item" onclick="toggleAccordion(this)">
                 <div class="main-row">
                     <span class="link-num">03</span>
-                    <div class="link-text"><div class="link-title">Интенсив «Освобождение от программ»</div></div>
+                    <div class="link-text">
+                        <div class="link-title">Интенсив «Освобождение от программ»</div>
+                    </div>
                     <span class="link-arrow">➔</span>
                 </div>
                 <div class="hidden-content">
-                    <p class="extended-descr">Глубокое погружение для обнаружения и деструкции чужих ментальных установок, страхов и блоков. Освобождаем заблокированную энергию.</p>
+                    <p class="extended-descr">
+                        Глубокое погружение для обнаружения и деструкции чужих ментальных установок, страхов и блоков. Освобождаем заблокированную энергию и направляем её на реальный рост масштаба вашей личности.
+                    </p>
                     <a href="#" class="buy-btn" onclick="event.stopPropagation(); alert('Переход на оплату интенсива'); return false;">Купить интенсив за 1 990 ₽</a>
                 </div>
             </div>
@@ -89,12 +171,16 @@
             <a href="https://t.me" target="_blank" class="link-item">
                 <div class="main-row">
                     <span class="link-num">04</span>
-                    <div class="link-text"><div class="link-title">Телеграм-канал</div></div>
+                    <div class="link-text">
+                        <div class="link-title">Телеграм-канал</div>
+                    </div>
                     <span class="link-arrow">↗</span>
                 </div>
             </a>
+
         </main>
 
+        <!-- Фирменный надежный юридический подвал (Три раздельные ссылки) -->
         <footer class="footer">
             <div class="legal-info">Самозанятая Гребенюк Светлана</div>
             <div class="legal-links">
@@ -109,11 +195,14 @@
         function toggleAccordion(element) {
             if (window.innerWidth <= 768) {
                 let items = document.getElementsByClassName("accordion-item");
-                for (let i = 0; i < items.length; i++) { if (items[i] !== element) items[i].classList.remove("active"); }
+                for (let i = 0; i < items.length; i++) {
+                    if (items[i] !== element) {
+                        items[i].classList.remove("active");
+                    }
+                }
                 element.classList.toggle("active");
             }
         }
     </script>
 </body>
 </html>
-ы
