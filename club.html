@@ -6,47 +6,66 @@
     <title>Закрытый клуб | Светлана Гребенюк</title>
     <style>
         :root {
-            --bg-color: #aa8a73;
-            --text-color: #32251d; 
+            --bg-color: #aa8a73; /* Премиальный песочно-кофейный фон */
+            --text-color: #32251d; /* Глубокий шоколадный цвет текста */
             --accent-color: #5d4638;  
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(255, 255, 255, 0.25); /* Мягкие контрастные плашки */
+            --card-border: rgba(50, 37, 29, 0.15); /* Деликатные кофейные границы */
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; }
-        .back-link { color: #666; text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; }
-        .back-link:hover { color: #fff; }
+        
+        .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; min-height: calc(100vh - 80px); }
+        
+        /* Кнопка назад */
+        .back-link { color: rgba(50, 37, 29, 0.6); text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; transition: 0.2s; font-weight: 500; }
+        .back-link:hover { color: var(--text-color); }
+        
+        /* Шапка */
         .club-header { margin-bottom: 40px; }
         .club-tag { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); margin-bottom: 10px; font-weight: 600; }
         .club-title { font-size: 36px; font-weight: 600; letter-spacing: -1px; line-height: 1.1; }
+        
+        /* Тарифные карточки */
         .tariffs { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-        .tariff-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; }
-        .tariff-title { font-size: 18px; font-weight: 500; margin-bottom: 5px; }
-        .tariff-days { font-size: 13px; color: rgba(50, 37, 29, 0.85); margin-bottom: 15px; }
-        .tariff-price { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: var(--accent-color); }
-        .btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; width: 100%; }
-        .btn-primary { background: #aa8a73; color: #32251d; }
-        .btn-secondary { background: transparent; color: #fff; border: 1px solid var(--card-border); }
-        .section-title { font-size: 22px; font-weight: 600; margin-bottom: 20px; margin-top: 20px; }
-        .philosophy-text { font-size: 14px; color: rgba(50, 37, 29, 0.85); line-height: 1.6; display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-        .features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-        .feature-item { background: rgba(255,255,255,0.01); border-left: 2px solid var(--accent-color); padding: 15px 20px; }
-        .feature-item h4 { font-size: 16px; font-weight: 500; margin-bottom: 5px; }
-        .feature-item p { font-size: 13px; color: rgba(50, 37, 29, 0.85); line-height: 1.5; }
-        .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; margin-bottom: 12px; cursor: pointer; }
-        .faq-q { font-size: 15px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
-        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; font-size: 13px; color: rgba(50, 37, 29, 0.85); }
+        .tariff-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; box-shadow: 0 4px 15px rgba(50, 37, 29, 0.05); transition: 0.3s; }
+        .tariff-card:hover { border-color: rgba(50, 37, 29, 0.3); transform: scale(1.01); }
+        
+        .tariff-title { font-size: 18px; font-weight: 600; margin-bottom: 5px; color: var(--text-color); }
+        .tariff-days { font-size: 13px; color: rgba(50, 37, 29, 0.75); margin-bottom: 15px; }
+        .tariff-price { font-size: 24px; font-weight: 700; margin-bottom: 20px; color: var(--text-color); }
+        
+        /* Кнопки */
+        .btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; width: 100%; transition: all 0.2s ease; border: none; cursor: pointer; }
+        .btn-primary { background: #32251d; color: #ffffff; }
+        .btn-primary:hover { background: #5d4638; box-shadow: 0 4px 12px rgba(50, 37, 29, 0.2); }
+        .btn-secondary { background: transparent; color: #32251d; border: 1px solid #32251d; }
+        .btn-secondary:hover { background: rgba(50, 37, 29, 0.08); }
+        
+        /* Философия */
+        .section-title { font-size: 22px; font-weight: 600; margin-bottom: 20px; margin-top: 20px; letter-spacing: -0.5px; }
+        .philosophy-text { font-size: 14px; color: rgba(50, 37, 29, 0.9); line-height: 1.6; display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
+        
+        /* Частые вопросы */
+        .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; margin-bottom: 12px; cursor: pointer; transition: 0.2s; }
+        .faq-item:hover { border-color: rgba(50, 37, 29, 0.25); }
+        .faq-q { font-size: 15px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; color: var(--text-color); }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; font-size: 13px; color: rgba(50, 37, 29, 0.8); }
         .faq-item.active .faq-a { max-height: 200px; opacity: 1; margin-top: 10px; }
-        .footer { text-align: center; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--card-border); }
-        .legal-info { font-size: 11px; color: #555; margin-bottom: 10px; }
-        .legal-links { display: flex; justify-content: center; }
-        .legal-links a { font-size: 11px; color: rgba(50, 37, 29, 0.85); text-decoration: none; border-bottom: 1px dashed #444; }
+        
+        /* Подвал */
+        .footer { text-align: center; margin-top: auto; padding-top: 40px; border-top: 1px solid var(--card-border); }
+        .legal-info { font-size: 11px; color: rgba(50, 37, 29, 0.6); margin-bottom: 10px; line-height: 1.4; }
+        .legal-links { display: flex; justify-content: center; gap: 15px; }
+        .legal-links a { font-size: 11px; color: rgba(50, 37, 29, 0.85); text-decoration: none; border-bottom: 1px dashed rgba(50, 37, 29, 0.4); transition: 0.2s; }
+        .legal-links a:hover { color: var(--text-color); border-bottom-color: var(--text-color); }
     </style>
 </head>
 <body>
     <div class="wrapper">
+        <!-- Ссылка возврата на главный сайт -->
         <a href="index.html" class="back-link">← На главную</a>
+        
         <header class="club-header">
             <div class="club-tag">Пространство для своих</div>
             <h1 class="club-title">«Закрытый клуб<br>Свет Души»</h1>
