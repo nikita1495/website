@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Закрытый клуб «Свет Души» | Светлана Гребенюк</title>
+    <title>Закрытый клуб | Светлана Гребенюк</title>
     <style>
         :root {
             --bg-color: #0d0d0d;
@@ -14,142 +14,82 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-        
         .wrapper { width: 100%; max-width: 480px; display: flex; flex-direction: column; }
-        
-        /* Кнопка назад */
-        .back-link { color: #666; text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; transition: 0.2s; }
+        .back-link { color: #666; text-decoration: none; font-size: 14px; margin-bottom: 30px; display: inline-block; }
         .back-link:hover { color: #fff; }
-
-        /* Главный заголовок */
         .club-header { margin-bottom: 40px; }
         .club-tag { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); margin-bottom: 10px; font-weight: 600; }
         .club-title { font-size: 36px; font-weight: 600; letter-spacing: -1px; line-height: 1.1; }
-
-        /* Блок тарифов */
         .tariffs { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-        .tariff-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; transition: 0.3s; }
-        .tariff-card:hover { border-color: rgba(255, 255, 255, 0.2); transform: translateY(-2px); }
+        .tariff-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; }
         .tariff-title { font-size: 18px; font-weight: 500; margin-bottom: 5px; }
         .tariff-days { font-size: 13px; color: #888; margin-bottom: 15px; }
         .tariff-price { font-size: 22px; font-weight: bold; margin-bottom: 20px; color: var(--accent-color); }
-        
-        /* Кнопки */
-        .btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; transition: 0.2s; border: none; width: 100%; cursor: pointer; }
+        .btn { display: block; text-align: center; padding: 14px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; width: 100%; }
         .btn-primary { background: #ffffff; color: #0d0d0d; }
-        .btn-primary:hover { background: #e6e6e6; }
         .btn-secondary { background: transparent; color: #fff; border: 1px solid var(--card-border); }
-        .btn-secondary:hover { background: rgba(255,255,255,0.05); }
-
-        /* Раздел Философии */
-        .section-title { font-size: 22px; font-weight: 600; margin-bottom: 20px; letter-spacing: -0.5px; margin-top: 20px; }
+        .section-title { font-size: 22px; font-weight: 600; margin-bottom: 20px; margin-top: 20px; }
         .philosophy-text { font-size: 14px; color: #aaa; line-height: 1.6; display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
-        .philosophy-text p { margin-bottom: 5px; }
-
-        /* Что входит в клуб */
         .features { display: flex; flex-direction: column; gap: 16px; margin-bottom: 40px; }
         .feature-item { background: rgba(255,255,255,0.01); border-left: 2px solid var(--accent-color); padding: 15px 20px; }
         .feature-item h4 { font-size: 16px; font-weight: 500; margin-bottom: 5px; }
         .feature-item p { font-size: 13px; color: #888; line-height: 1.5; }
-
-        /* Блок FAQ (Вопросы) */
         .faq-item { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 8px; padding: 20px; margin-bottom: 12px; cursor: pointer; }
         .faq-q { font-size: 15px; font-weight: 500; display: flex; justify-content: space-between; align-items: center; }
-        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; font-size: 13px; color: #aaa; line-height: 1.5; }
+        .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; opacity: 0; font-size: 13px; color: #aaa; }
         .faq-item.active .faq-a { max-height: 200px; opacity: 1; margin-top: 10px; }
-
-        /* Подвал */
         .footer { text-align: center; margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--card-border); }
-        .legal-info { font-size: 11px; color: #555; margin-bottom: 10px; line-height: 1.4; }
-        .legal-links { display: flex; justify-content: center; gap: 15px; }
+        .legal-info { font-size: 11px; color: #555; margin-bottom: 10px; }
+        .legal-links { display: flex; justify-content: center; }
         .legal-links a { font-size: 11px; color: #888; text-decoration: none; border-bottom: 1px dashed #444; }
     </style>
 </head>
 <body>
-
     <div class="wrapper">
-        <!-- Ссылка возврата на главный сайт -->
         <a href="index.html" class="back-link">← На главную</a>
-
-        <!-- Шапка клуба -->
         <header class="club-header">
             <div class="club-tag">Пространство для своих</div>
             <h1 class="club-title">«Закрытый клуб<br>Свет Души»</h1>
         </header>
 
-        <!-- Тарифы как у Риммы -->
         <section class="tariffs">
             <div class="tariff-card">
                 <div class="tariff-title">Вступить в Клуб (Максимум)</div>
                 <div class="tariff-days">Полный доступ на 30 дней</div>
                 <div class="tariff-price">2 900 ₽</div>
-                <a href="#" class="btn btn-primary" onclick="alert('Переход на платежную систему подписки на 30 дней'); return false;">Получить доступ</a>
+                <a href="#" class="btn btn-primary" onclick="alert('Оплата подписки на 30 дней'); return false;">Получить доступ</a>
             </div>
-
             <div class="tariff-card">
                 <div class="tariff-title">Вступить в Клуб (Лайт)</div>
                 <div class="tariff-days">Тест-драйв доступа на 15 дней</div>
                 <div class="tariff-price">1 500 ₽</div>
-                <a href="#" class="btn btn-secondary" onclick="alert('Переход на платежную систему подписки на 15 дней'); return false;">Попробовать Лайт</a>
+                <a href="#" class="btn btn-secondary" onclick="alert('Оплата подписки на 15 дней'); return false;">Попробовать Лайт</a>
             </div>
         </section>
 
-        <!-- Описание философии в стиле Карамовой -->
         <section class="philosophy">
-            <h2 class="section-title">Что такое Закрытый клуб?</h2>
+            <h2 class="section-title">What is Закрытый клуб?</h2>
             <div class="philosophy-text">
-                <p>Во-первых, это пространство точечной работы с теми, кто готов инвестировать в свое состояние. Это место закрыто от случайных людей, ищущих очередную "волшебную таблетку" или бесплатные поверхностные марафоны.</p>
-                <p>Во-вторых, здесь участники получают возможность под моим личным кураторством разобрать свое здоровье по полочкам, найти истинные причины дефицита энергии и перестать искать стабильность снаружи себя. Всё, что вы ищете — уже внутри вас.</p>
-                <p>Оздоровление сознания и тела — это кропотливый, но невероятно красивый умственный и духовный труд. С добром пожаловать домой, к себе.</p>
+                <p>Это пространство точечной работы с теми, кто готов инвестировать в свое состояние. Место закрыто от случайных людей.</p>
+                <p>Оздоровление сознания и тела — это кропотливый, но невероятно красивый умственный и духовный труд.</p>
             </div>
         </section>
 
-        <!-- Что входит в клуб -->
-        <section class="whats-inside">
-            <h2 class="section-title">Что внутри клуба?</h2>
-            <div class="features">
-                <div class="feature-item">
-                    <h4>Живые разборы ситуаций</h4>
-                    <p>Формат онлайн-включений: разбираем конкретные затыки участников в теме здоровья, детокса и ресурса, а не абстрактные теории.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Платформа с эфирами</h4>
-                    <p>Удобный доступ ко всем записям встреч и практик. База знаний, которая доступна вам 24/7 с любого устройства.</p>
-                </div>
-                <div class="feature-item">
-                    <h4>Закрытый Telegram-канал</h4>
-                    <p>Сердце клуба. Ежедневные аудио-настройки, поддерживающее поле единомышленников и глубокие разборы смыслов.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Частые вопросы (FAQ) -->
         <section class="faq">
             <h2 class="section-title">Частые вопросы</h2>
-            
             <div class="faq-item" onclick="toggleFaq(this)">
                 <div class="faq-q">Как продлевается подписка? <span>+</span></div>
-                <div class="faq-a">Продление происходит автоматически каждые 30 (или 15) дней. Вы можете управлять подпиской или отключить её в любой момент через личный кабинет или нашего бота поддержки.</div>
-            </div>
-
-            <div class="faq-item" onclick="toggleFaq(this)">
-                <div class="faq-q">Возможен ли возврат средств? <span>+</span></div>
-                <div class="faq-a">Возврат денежных средств за цифровые информационные продукты и предоставленный доступ к закрытым материалам не предусмотрен согласно правилам публичной оферты.</div>
+                <div class="faq-a">Продление происходит автоматически каждые 30 (или 15) дней. Отменить можно в любой момент.</div>
             </div>
         </section>
 
-        <!-- Юридический подвал -->
         <footer class="footer">
-            <div class="legal-info">
-                Самозанятая Гребенюк Светлана<br>
-                ИНН: 123456789012 | СЛУЖБА ПОДДЕРЖКИ: your-email@mail.ru
-            </div>
+            <div class="legal-info">Самозанятая Гребенюк Светлана</div>
             <div class="legal-links">
-               <a href="legal.html">Правовая информация</a>
+                <a href="legal.html">Правовая информация</a>
             </div>
         </footer>
     </div>
-
     <script>
         function toggleFaq(element) {
             element.classList.toggle("active");
