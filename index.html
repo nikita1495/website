@@ -112,8 +112,8 @@
         <!-- Блоки-ссылки и интерактивные карточки -->
         <main class="links-list">
             
-            <!-- 01. Закрытый клуб (Обычная прямая ссылка) -->
-            <a href="ССЫЛКА_НА_ОПЛАТУ_ПОДПИСКИ" class="link-item">
+            <!-- 01. Закрытый клуб -->
+            <a href="#" class="link-item" id="club-link">
                 <div class="main-row">
                     <span class="link-num">01</span>
                     <div class="link-text">
@@ -136,7 +136,7 @@
                     <p class="extended-descr">
                         Это глубокий практический материал для тех, кто устал искать одобрение снаружи. Вы получите пошаговый алгоритм, как обнаружить неиссякаемый источник силы и уверенности внутри себя, стабилизировать состояние и вернуть управление своей жизнью.
                     </p>
-                    <a href="ССЫЛКА_НА_ОПЛАТУ_КУРСА_1" class="buy-btn" onclick="event.stopPropagation();">Купить курс за 1 490 ₽</a>
+                    <a href="#" class="buy-btn" id="course1-link" onclick="event.stopPropagation(); alert('Здесь будет переход на вашу оплату!'); return false;">Купить курс за 1 490 ₽</a>
                 </div>
             </div>
 
@@ -153,12 +153,12 @@
                     <p class="extended-descr">
                         Интенсив-погружение, направленный на обнаружение и деструкцию чужих ментальных программ, страхов и установок. Практическая работа с подсознанием для освобождения заблокированной энергии и перехода на новый уровень масштаба личности.
                     </p>
-                    <a href="ССЫЛКА_НА_ОПЛАТУ_КУРСА_2" class="buy-btn" onclick="event.stopPropagation();">Купить интенсив за 1 990 ₽</a>
+                    <a href="#" class="buy-btn" id="course2-link" onclick="event.stopPropagation(); alert('Здесь будет переход на вашу оплату!'); return false;">Купить интенсив за 1 990 ₽</a>
                 </div>
             </div>
 
-            <!-- 04. Телеграм-канал (Обычная прямая ссылка) -->
-            <a href="https://t.me" target="_blank" class="link-item">
+            <!-- 04. Телеграм-канал -->
+            <a href="#" class="link-item" id="tg-link" target="_blank">
                 <div class="main-row">
                     <span class="link-num">04</span>
                     <div class="link-text">
@@ -179,17 +179,14 @@
     <!-- Логика работы интерактивных плашек -->
     <script>
         function toggleAccordion(element) {
-            // Закрываем другие открытые плашки, чтобы фокус был только на одной
             let items = document.getElementsByClassName("accordion-item");
             for (let i = 0; i < items.length; i++) {
                 if (items[i] !== element) {
                     items[i].classList.remove("active");
                 }
             }
-            // Открываем или закрываем текущую плашку
             element.classList.toggle("active");
         }
     </script>
 </body>
 </html>
-
