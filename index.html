@@ -6,11 +6,11 @@
     <title>Светлана Гребенюк</title>
     <style>
         :root  {
-            --bg-color: #aa8a73; /* Ваш новый благородный песочный фон */
-            --text-color: #32251d; /* Ваш новый шоколадный цвет текста */
-            --accent-color: #5d4638; /* Более глубокий оттенок для акцентов */
-            --card-bg: rgba(255, 255, 255, 0.25); /* Светлые мягкие плашки на кофейном фоне */
-            --card-border: rgba(50, 37, 29, 0.15); /* Деликатные кофейные границы */
+            --bg-color: #aa8a73;
+            --text-color: #32251d;
+            --accent-color: #5d4638;
+            --card-bg: rgba(255, 255, 255, 0.25);
+            --card-border: rgba(50, 37, 29, 0.15);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
         body { background-color: var(--bg-color); color: var(--text-color); padding: 40px 20px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
@@ -51,10 +51,10 @@
         
         /* Главная строка внутри плашки */
         .main-row { display: flex; align-items: center; width: 100%; }
-        .link-num { font-size: 13px; font-weight: 500; color: #666; margin-right: 20px; min-width: 20px; font-variant-numeric: tabular-nums; }
+        .link-num { font-size: 13px; font-weight: 500; color: rgba(50, 37, 29, 0.6); margin-right: 20px; min-width: 20px; font-variant-numeric: tabular-nums; }
         .link-text { flex-grow: 1; }
         .link-title { font-size: 17px; font-weight: 500; letter-spacing: -0.2px; }
-        .link-arrow { font-size: 18px; color: #444; margin-left: 15px; transition: transform 0.3s ease; }
+        .link-arrow { font-size: 18px; color: rgba(50, 37, 29, 0.5);; margin-left: 15px; transition: transform 0.3s ease; }
         
         /* Анимация стрелки при раскрытии */
         .accordion-item:hover .link-arrow, .accordion-item.active .link-arrow { transform: rotate(90deg); color: var(--text-color); }
@@ -76,7 +76,7 @@
             margin-top: 15px;
         }
 
-        .extended-descr { font-size: 14px; color: #aaa; line-height: 1.6; margin-bottom: 20px; }
+        .extended-descr { font-size: 14px; color: rgba(50, 37, 29, 0.8); line-height: 1.6; margin-bottom: 20px; }
         
         /* Премиальная кнопка перехода */
         .buy-btn { 
